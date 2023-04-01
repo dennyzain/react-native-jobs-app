@@ -1,13 +1,30 @@
-import { Text, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import { useState } from "react";
 import { useRouter, Stack } from "expo-router";
+import { COLORS, SIZES, icons, images } from "../constants";
+import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "../components";
 const Home = () => {
   const router = useRouter();
 
   return (
-    <View>
-      <Text>Hello world! Ws</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+      <Stack.Screen
+        options={{
+          headerStyle: COLORS.lightWhite,
+          headerShadowVisible: false,
+          headerTitle: () => null,
+          headerLeft: () => <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />,
+          headerRight: () => <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />,
+        }}
+      />
+      <ScrollView>
+        <View style={{ flex: 1, padding: SIZES.medium }}>
+          <Welcome />
+          <Popularjobs />
+          <Nearbyjobs />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
