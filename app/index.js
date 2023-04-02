@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter, Stack } from "expo-router";
 import { COLORS, SIZES, icons, images } from "../constants";
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "../components";
+
 const Home = () => {
   const router = useRouter();
 
