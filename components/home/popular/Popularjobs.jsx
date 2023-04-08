@@ -7,15 +7,13 @@ import { SIZES } from "../../../constants";
 import useFetch from "../../../hook/useFetch";
 
 const Popularjobs = () => {
-  const { data } = useFetch("search", {
-    query: "reactjs",
+  const { data, isError, isLoading } = useFetch("search", {
+    query: "software engineer",
     page: "1",
     num_pages: "1",
   });
 
   console.log(data);
-  const isLoading = false;
-  const isError = false;
   return (
     <View style={styles.container}>
       <View style={styles.header}>
