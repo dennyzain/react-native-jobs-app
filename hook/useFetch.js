@@ -17,7 +17,6 @@ const useFetch = (endpoint, params) => {
       "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
     },
   };
-  console.log(rapidApiKey, "APOASPD");
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.request(options);
