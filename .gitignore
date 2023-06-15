@@ -11,6 +11,7 @@ npm-debug.*
 web-build/
 .env.development
 .env.production
+yarn.lock
 
 # macOS
 .DS_Store
