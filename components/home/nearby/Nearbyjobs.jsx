@@ -6,15 +6,15 @@ import useFetch from "../../../hook/useFetch";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { COLORS, SIZES, icons, images } from "../../../constants";
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
+import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
 
 const Nearbyjobs = () => {
   const { data, isError, isLoading } = useFetch("search", {
-    query: "software engineer",
+    query: "software",
     page: "1",
     num_pages: "1",
   });
 
-  console.log(isError);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -29,14 +29,7 @@ const Nearbyjobs = () => {
         ) : isError ? (
           <Text>Something went wrong</Text>
         ) : (
-          <FlatList
-            styles={styles.cardsContainer}
-            data={data.data}
-            keyExtractor={(key) => key?.job_id}
-            contentContainerStyle={{ columnGap: SIZES.large }}
-            renderItem={({ item, index }) => <PopularJobCard item={item} key={index} />}
-            horizontal
-          />
+          data.data?.map((job) => <NearbyJobCard job={job} key={`job-${job.job_id}`} />)
         )}
       </View>
     </View>
