@@ -13,7 +13,7 @@ const Home = () => {
         options={{
           headerStyle: COLORS.lightWhite,
           headerShadowVisible: false,
-          headerTitle: () => null,
+          headerTitle: () => "",
           headerLeft: () => <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />,
           headerRight: () => <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />,
         }}

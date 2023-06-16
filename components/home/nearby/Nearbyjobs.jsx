@@ -7,8 +7,10 @@ import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { COLORS, SIZES, icons, images } from "../../../constants";
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
+import { useRouter } from "expo-router";
 
 const Nearbyjobs = () => {
+  const router = useRouter();
   const { data, isError, isLoading } = useFetch("search", {
     query: "software",
     page: "1",
@@ -29,7 +31,13 @@ const Nearbyjobs = () => {
         ) : isError ? (
           <Text>Something went wrong</Text>
         ) : (
-          data.data?.map((job) => <NearbyJobCard job={job} key={`job-${job.job_id}`} />)
+          data.data?.map((job) => (
+            <NearbyJobCard
+              job={job}
+              key={`job-${job.job_id}`}
+              handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
+            />
+          ))
         )}
       </View>
     </View>
